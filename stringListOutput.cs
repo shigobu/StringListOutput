@@ -9,7 +9,7 @@ class StringListOutput
     /// Linuxのlsコマンドみたいにリスト表示します。
     /// </summary>
     /// <param name="list">コレクション</param>
-    private static void WriteList(System.Collections.IEnumerable list)
+    public static void WriteList(System.Collections.IEnumerable list)
     {
         //文字との隙間
         const int margin = 2;

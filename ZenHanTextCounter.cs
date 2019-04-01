@@ -10,7 +10,7 @@ class ZenHanTextCounter
     /// </summary>
     /// <param name="str">数える文字列</param>
     /// <returns>全角を２文字、半角を１文字と数える文字数</returns>
-    public static int Count(string str)
+    internal static int Count(string str)
     {
         int count = 0;
         foreach (char c in str)
@@ -26,32 +26,32 @@ class ZenHanTextCounter
         }
         return count;
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、半角かどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が半角である場合は true 。それ以外は false。</returns>
-    public static bool IsZenkaku(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、半角かどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が半角である場合は true 。それ以外は false。</returns>
+	internal static bool IsZenkaku(char c)
     {
         return IsHiragana(c) || IsFullwidthKatakana(c) || IsKanji(c) || IsFullwidthDigit(c) || IsUpperLatin(c) || IsLowerLatin(c);
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、ひらがなかどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c がひらがなである場合は true。それ以外の場合は false。</returns>
-    public static bool IsHiragana(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、ひらがなかどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c がひらがなである場合は true。それ以外の場合は false。</returns>
+	internal static bool IsHiragana(char c)
     {
         //「ぁ」～「より」までと、「ー」「ダブルハイフン」をひらがなとする
         return ('\u3041' <= c && c <= '\u309F')
             || c == '\u30FC' || c == '\u30A0';
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、全角カタカナかどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が全角カタカナである場合は true。それ以外の場合は false。</returns>
-    public static bool IsFullwidthKatakana(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、全角カタカナかどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が全角カタカナである場合は true。それ以外の場合は false。</returns>
+	internal static bool IsFullwidthKatakana(char c)
     {
         //「ァ」から「コト」までと、カタカナフリガナ拡張と、
         //濁点と半濁点を全角カタカナとする
@@ -60,45 +60,45 @@ class ZenHanTextCounter
             || ('\u31F0' <= c && c <= '\u31FF')
             || ('\u3099' <= c && c <= '\u309C');
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、漢字かどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が漢字である場合は true。それ以外の場合は false。</returns>
-    public static bool IsKanji(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、漢字かどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が漢字である場合は true。それ以外の場合は false。</returns>
+	internal static bool IsKanji(char c)
     {
         //CJK統合漢字、CJK互換漢字、CJK統合漢字拡張Aの範囲にあるか調べる
         return ('\u4E00' <= c && c <= '\u9FCF')
             || ('\uF900' <= c && c <= '\uFAFF')
             || ('\u3400' <= c && c <= '\u4DBF');
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、０ から ９ までの数字かどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が数字である場合は true。それ以外の場合は false。</returns>
-    public static bool IsFullwidthDigit(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、０ から ９ までの数字かどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が数字である場合は true。それ以外の場合は false。</returns>
+	internal static bool IsFullwidthDigit(char c)
     {
         return '０' <= c && c <= '９';
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、英字の大文字かどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が英字の大文字である場合は true。
-    /// それ以外の場合は false。</returns>
-    public static bool IsUpperLatin(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、英字の大文字かどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が英字の大文字である場合は true。
+	/// それ以外の場合は false。</returns>
+	internal static bool IsUpperLatin(char c)
     {
         //全角英字の大文字の時はTrue
         return 'Ａ' <= c && c <= 'Ｚ';
     }
-    /// <summary>
-    /// 指定した Unicode 文字が、英字の小文字かどうかを示します。
-    /// </summary>
-    /// <param name="c">評価する Unicode 文字。</param>
-    /// <returns>c が英字の小文字である場合は true。
-    /// それ以外の場合は false。</returns>
-    public static bool IsLowerLatin(char c)
+	/// <summary>
+	/// 指定した Unicode 文字が、英字の小文字かどうかを示します。
+	/// </summary>
+	/// <param name="c">評価する Unicode 文字。</param>
+	/// <returns>c が英字の小文字である場合は true。
+	/// それ以外の場合は false。</returns>
+	internal static bool IsLowerLatin(char c)
     {
         //全角英字の小文字の時はTrue
         return 'ａ' <= c && c <= 'ｚ';

@@ -4,3 +4,5 @@
 
 /.vs/StringListOutput/v15
 /obj/Debug
+/bin
+/obj/Release

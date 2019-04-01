@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-class StringListOutput
+public class StringListOutput
 {
 
     /// <summary>
